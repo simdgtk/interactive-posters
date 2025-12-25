@@ -129,17 +129,25 @@ export class SceneManager {
 
     const isDev = import.meta.env.MODE === 'development'
     if (isDev) {
-      import('../plugin/local-storage-plugin').then((LocalStoragePlugin) => {
-        this.pane.registerPlugin(LocalStoragePlugin)
-        this.pane.addBlade({
-          view: 'local-storage',
-          parentPane: this.pane,
-          projectName: 'interactive-posters',
-          title: 'Presets',
-          expanded: false,
-          type: 'three',
-        })
-      })
+      // import.meta.glob to safely check for the plugin's existence at build time, prevents "Could not resolve" errors on Vercel where the file is gitignored
+      const modules = import.meta.glob('../plugin/local-storage-plugin/index.ts')
+
+      for (const path in modules) {
+        const importer = modules[path]
+        if (importer) {
+          importer().then((LocalStoragePlugin: any) => {
+            this.pane.registerPlugin(LocalStoragePlugin)
+            this.pane.addBlade({
+              view: 'local-storage',
+              parentPane: this.pane,
+              projectName: 'interactive-posters',
+              title: 'Presets',
+              expanded: false,
+              type: 'three',
+            })
+          })
+        }
+      }
     }
 
     this.createDebugControls()
