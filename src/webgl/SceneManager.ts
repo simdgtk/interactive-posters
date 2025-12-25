@@ -65,10 +65,13 @@ export class SceneManager {
     this.renderer = new THREE.WebGLRenderer({
       canvas: this.canvas,
       antialias: true,
-      alpha: true,
+      alpha: false
     })
     this.renderer.setSize(window.innerWidth, window.innerHeight)
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+
+    this.renderer.toneMapping = THREE.ReinhardToneMapping // Le plus efficace pour "écraser" les valeurs vers 1.0
+    this.renderer.toneMappingExposure = 1.0
 
     // Controls
     this.controls = new OrbitControls(this.camera, this.renderer.domElement)
@@ -245,6 +248,10 @@ export class SceneManager {
 
   public resize(width: number, height: number) {
     this.renderer.setSize(width, height)
+
+    
+    this.renderer.toneMapping = THREE.ReinhardToneMapping // Le plus efficace pour "écraser" les valeurs vers 1.0
+    this.renderer.toneMappingExposure = 1.0
     this.postFX.resize(width, height)
 
     this.camera.aspect = width / height

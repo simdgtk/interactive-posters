@@ -5,7 +5,6 @@ uniform vec2 uResolution;
 uniform float uCellSize;
 uniform float uCharactersCount;
 uniform sampler2D uCharacters;
-uniform vec3 uColor;
 uniform vec3 uBackgroundColor;
 const vec2 SIZE = vec2(16.);
 
@@ -41,7 +40,8 @@ void main() {
 
     float charMask = asciiCharacter.a; 
     
-    vec3 finalColor = mix(uBackgroundColor, uColor, charMask);
+    vec3 finalColor = mix(uBackgroundColor, asciiCharacter.rgb, charMask);
     
-    gl_FragColor = vec4(finalColor, 0.2);
+    float alpha = 0.2;
+    gl_FragColor = vec4(finalColor * alpha, alpha);
 }
