@@ -1,0 +1,68 @@
+* {
+  font-family: "EB Garamond", serif;
+  font-optical-sizing: auto;
+  font-display: swap;
+}
+
+h1 {
+  font-family: "EB Garamond", serif;
+  font-size: 2.5rem;
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1.2;
+}
+
+a,
+.links-list__mail {
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0.05em;
+    width: 100%;
+    height: 0.7px;
+    background: currentColor;
+    transform-origin: left;
+    transform: scaleX(1);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &:hover::after {
+    animation: underline-remove 0.2s;
+    transition: transform 0.15s ease-out;
+  }
+
+  &:hover {
+    &::after {
+      animation: underline-reveal 0.3s ease-out 0s forwards;
+    }
+  }
+}
+
+@keyframes underline-reveal {
+  0% {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
+  100% {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+@keyframes underline-remove {
+  0% {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  100% {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+}

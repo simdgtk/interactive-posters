@@ -1,0 +1,35 @@
+@use "reset" as *;
+@use "lenis" as *;
+@use "variables" as *;
+@use "utils" as *;
+@use "typography" as *;
+
+#app,
+main,
+#__nuxt {
+  height: 100%;
+}
+
+body {
+  color: $white;
+  background-color: $background-color;
+  font-family: 'EB Garamond', serif;
+  width: 100%;
+  height: 100dvh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smooth: always;
+
+  &::selection {
+    background-color: $purple;
+    color: $white;
+  }
+
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+
+  scroll-behavior: smooth;
+}
