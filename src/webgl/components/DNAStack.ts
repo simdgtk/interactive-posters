@@ -1,6 +1,6 @@
 import * as THREE from 'three'
 import CustomShaderMaterial from 'three-custom-shader-material/vanilla'
-import dnaVertexShader from '../../shaders/dna/vertex.vert'
+import dnaVertexShader from '../../shaders/dna/dna.vert'
 import mockPoster1 from '../../assets/images/mockPoster1.webp'
 
 export class DNAStack {

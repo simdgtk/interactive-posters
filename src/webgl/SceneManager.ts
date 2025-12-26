@@ -134,7 +134,7 @@ export class SceneManager {
 
     const isDev = import.meta.env.MODE === 'development'
     if (isDev) {
-      // import.meta.glob to safely check for the plugin's existence at build time, prevents "Could not resolve" errors on Vercel where the file is gitignored
+      // import.meta.glob to safely check for the plugin's existence at build time
       const modules = import.meta.glob('../plugin/local-storage-plugin/index.ts')
 
       for (const path in modules) {
@@ -252,7 +252,7 @@ export class SceneManager {
     this.renderer.setSize(width, height)
 
 
-    this.renderer.toneMapping = THREE.ReinhardToneMapping // Le plus efficace pour "écraser" les valeurs vers 1.0
+    this.renderer.toneMapping = THREE.ReinhardToneMapping
     this.renderer.toneMappingExposure = 1.0
     this.postFX.resize(width, height)
 

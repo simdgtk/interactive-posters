@@ -1,6 +1,6 @@
 import * as THREE from 'three'
-import backgroundVertexShader from '../../shaders/base.vert.glsl'
-import backgroundFragmentShader from '../../shaders/backgroundPlane/background.frag.glsl'
+import backgroundVertexShader from '../../shaders/base.vert'
+import backgroundFragmentShader from '../../shaders/backgroundPlane/background.frag'
 import { params } from '../Config'
 
 interface BackgroundPlaneUniforms {
