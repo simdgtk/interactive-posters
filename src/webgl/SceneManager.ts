@@ -55,6 +55,8 @@ export class SceneManager {
     this.dnaScene = new THREE.Scene()
     this.dnaScene.background = null
     this.dnaScene.environment = environementMap
+    this.dnaScene.environmentIntensity = 5.0
+    this.dnaScene.environmentRotation = new THREE.Euler(0, Math.PI / 2, 0)
 
     // Camera
     this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000)
@@ -249,7 +251,7 @@ export class SceneManager {
   public resize(width: number, height: number) {
     this.renderer.setSize(width, height)
 
-    
+
     this.renderer.toneMapping = THREE.ReinhardToneMapping // Le plus efficace pour "écraser" les valeurs vers 1.0
     this.renderer.toneMappingExposure = 1.0
     this.postFX.resize(width, height)
